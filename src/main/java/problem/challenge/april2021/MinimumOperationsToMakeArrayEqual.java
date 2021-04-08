@@ -1,3 +1,5 @@
+package problem.challenge.april2021;
+
 public class MinimumOperationsToMakeArrayEqual {
     public int minOperations(int n) {
         int avg = 0;

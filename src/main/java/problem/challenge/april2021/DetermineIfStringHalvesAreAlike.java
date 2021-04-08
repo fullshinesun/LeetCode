@@ -1,3 +1,5 @@
+package problem.challenge.april2021;
+
 public class DetermineIfStringHalvesAreAlike {
     private static final char[] vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
 
