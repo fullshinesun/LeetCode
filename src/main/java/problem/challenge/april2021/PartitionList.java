@@ -1,5 +1,8 @@
 package problem.challenge.april2021;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class PartitionList {
 
     public ListNode partition(ListNode head, int x) {
@@ -33,6 +36,29 @@ public class PartitionList {
             return lessHead;
         }
         return moreHead;
+    }
+
+    public ListNode partition2(ListNode head, int x) {
+        Map<Boolean, ListNode[]> pointer = new HashMap<>();
+        pointer.put(Boolean.TRUE, new ListNode[]{null, null});
+        pointer.put(Boolean.FALSE, new ListNode[]{null, null});
+        ListNode curr = head;
+        while (curr != null) {
+            ListNode[] p = pointer.get(curr.val < x);
+            if (p[0] == null) {
+                p[0] = new ListNode(curr.val);
+                p[1] = p[0];
+            } else {
+                p[1].next = new ListNode(curr.val);
+                p[1] = p[1].next;
+            }
+            curr = curr.next;
+        }
+        if (pointer.get(true)[0] != null) {
+            pointer.get(true)[1].next = pointer.get(false)[0];
+            return pointer.get(true)[0];
+        }
+        return pointer.get(false)[0];
     }
 
     public class ListNode {
